@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>"Border Animation"</title>
+
+	<style>
+		body {
+			font-family: 'Courier New', Courier, monospace;
+			min-height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: #0e1538;
+		}
+
+		.box {
+			position: relative;
+			width: 300px;
+			height: 300px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			overflow: hidden;
+			border-radius: 20px;
+		}
+
+		.box::before {
+			content: '';
+			position: absolute;
+			width: 260px;
+			height: 140%;
+			background: linear-gradient(#00ccff, #d400d4);
+			animation: animate 4s cubic-bezier(0.075, 0.82, 0.165, 1) infinite;
+		}
+
+		.box::after {
+			content: '';
+			position: absolute;
+			background: #0e1538;
+			inset: 6px;
+			border-radius: 14px;
+		}
+
+		@keyframes animate {
+			from {
+				transform: rotata(0deg);
+			}
+
+			to {
+				transform: rotate(360deg);
+			}
+		}
+
+		.box h2 {
+			position: relative;
+			color: #fff;
+			font-size: 10em;
+			z-index: 1;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="box">
+		<h2>02</h2>
+	</div>
+</body>
+
+</html>
