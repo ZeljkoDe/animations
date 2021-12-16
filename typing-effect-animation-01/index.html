@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Typing Effect</title>
+
+	<style>
+		body {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			min-height: 100vh;
+			background: #000;
+			color: #eee;
+		}
+
+		.typed p {
+			font-size: 2rem;
+			padding: 0.5rem;
+			font-weight: bold;
+			letter-spacing: 0.1rem;
+			text-align: center;
+			overflow: hidden;
+		}
+
+		.typed__text {
+			font-weight: normal;
+			color: #b86128;
+		}
+
+		.typed__cursor {
+			display: inline-block;
+			background-color: #ccc;
+			margin-left: 0.1rem;
+			width: 3px;
+			animation: blink 1s infinite;
+		}
+
+		.typed__cursor.typing {
+			animation: none;
+		}
+
+		@keyframes blink {
+			0% {
+				background-color: #ccc;
+			}
+
+			49% {
+				background-color: #ccc;
+			}
+
+			50% {
+				background-color: transparent;
+			}
+
+			99% {
+				background-color: transparent;
+			}
+
+			190% {
+				background-color: #ccc;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="typed">
+		<p>Typing: <span class="typed__text"></span><span class="typed__cursor">&nbsp;</span></p>
+	</div>
+
+	<script>
+		const typedText = document.querySelector('.typed__text')
+		const typedCursor = document.querySelector('.typed__cursor')
+		const textArray = ['Zeljko.De', 'Frontend developer', 'Photographer']
+		const typingDelay = 100
+		const erasingDelay = 100
+		const newTextDelay = 2000
+		let textArrayIndex = 0
+		let charIndex = 0
+
+		const type = () => {
+			if (charIndex < textArray[textArrayIndex].length) {
+				if (!typedCursor.classList.contains('typing')) typedCursor.classList.add('typing')
+				typedText.textContent +=
+					textArray[textArrayIndex].charAt(charIndex)
+				charIndex++
+				setTimeout(type, typingDelay);
+			} else {
+				typedCursor.classList.remove('typing')
+				setTimeout(erase, newTextDelay);
+			}
+		}
+
+		const erase = () => {
+			if (charIndex > 0) {
+				if (!typedCursor.classList.contains('typing')) typedCursor.classList.add('typing')
+				typedText.textContent = textArray[textArrayIndex].substring(0, charIndex - 1)
+				charIndex--
+				setTimeout(erase, erasingDelay);
+			} else {
+				typedCursor.classList.remove('typing')
+				textArrayIndex++
+				if (textArrayIndex >= textArray.length) textArrayIndex = 0
+				setTimeout(type, typingDelay + 1100);
+			}
+		}
+
+		document.addEventListener('DOMContentLoaded', function () {
+			if (textArray.length) setTimeout(type, newTextDelay + 250)
+		})
+	</script>
+</body>
+
+</html>
