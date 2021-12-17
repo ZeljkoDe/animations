@@ -1,0 +1,45 @@
+@use "sass:math";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #000;
+	color: white;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.morphing {
+	position: relative;
+	font-size: 120px;
+	filter: contrast(150%) blur(1px);
+}
+
+$speed: 16s;
+$wordCount: 6;
+
+.word {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	animation: word $speed infinite ease-in-out;
+
+
+	@for $i from 0 to $wordCount {
+		&:nth-child(#{$i + 1}) {
+	animation-delay: math.div($speed,($wordCount + 1)) * $i - $speed;
+		}
+	}
+}
+
+@keyframes word {
+	0%,5%,100% {filter: blur(0px); opacity: 1;}
+	20%,80% {filter: blur(1em); opacity: 0;}
+}
