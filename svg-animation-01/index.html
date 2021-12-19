@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>SVG animation</title>
+
+	<style>
+		@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300);
+
+		body {
+			align-items: center;
+			background: #222;
+			display: flex;
+			flex-direction: column;
+			height: 100vh;
+			justify-content: center;
+		}
+
+		.svg-container {
+			height: 124px;
+			position: relative;
+			width: 124px;
+		}
+
+		.svg-container h1 {
+			color: #aaa;
+			font-family: "Source Sans Pro";
+			font-size: 1.2rem;
+			left: 50%;
+			letter-spacing: 4px;
+			position: absolute;
+			text-align: center;
+			top: -60px;
+			transform: translateX(-50%);
+			width: 100%;
+		}
+
+		.circle {
+			height: 124px;
+			width: 124px;
+		}
+
+		.circle .background {
+			fill: transparent;
+			stroke: #1abc9c;
+			transition: all 200ms ease;
+		}
+
+		.circle .foreground {
+			fill: transparent;
+			stroke-dasharray: 377;
+			stroke-dashoffset: 377;
+			stroke: #ee3769;
+			transform-origin: 50% 50%;
+			transform: rotate(-270deg);
+			transition: all 800ms ease;
+		}
+
+		.circle .line {
+			stroke-width: 2;
+			stroke: #1abc9c;
+			transform-origin: 50% 50%;
+			transition: all 500ms ease;
+		}
+
+		.circle .line2 {
+			transform: rotate(-90deg);
+		}
+
+		.circle:hover {
+			cursor: pointer;
+		}
+
+		.circle:hover .background {
+			stroke: transparent;
+		}
+
+		.circle:hover .foreground {
+			stroke-dashoffset: 0;
+			transform: rotate(-90deg);
+		}
+
+		.circle:hover .line {
+			stroke: #ee3769;
+		}
+
+		.circle:hover .line {
+			transform: rotate(180deg);
+		}
+
+		.circle:hover .line2 {
+			transform: rotate(0);
+		}
+	</style>
+</head>
+
+<body>
+	<section class="svg-container">
+		<h1>Hover me</h1>
+
+		<svg class="circle" xmlns="http://www.w3.org/2000/svg">
+			<g>
+				<ellipse class="background" ry="60" rx="60" cy="62.5" cx="62.5" stroke-width="2" />
+				<ellipse class="foreground" ry="60" rx="60" cy="62.5" cx="62.5" stroke-width="2" />
+				<line class="line line1" x1="52" y1="62" x2="74" y2="62" />
+				<line class="line line2" x1="52" y1="62" x2="74" y2="62" />
+			</g>
+		</svg>
+	</section>
+
+</body>
+
+</html>
