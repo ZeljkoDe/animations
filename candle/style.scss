@@ -1,0 +1,200 @@
+%eyes {
+	width: 8px;
+	height: 8px;
+	background: #000;
+	border-radius: 50%;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background: #d2a3a9;
+}
+
+.candle, .candle2 {
+	height: 150px;
+	width: 40px;
+	background: linear-gradient(30deg, #ecad8f 80%, #fed797);
+	position: relative;
+	border-radius: 5px 20px 0 0;
+
+
+	.eyes {
+		position: absolute;
+		top: 30px;
+		left: 8px;
+		@extend %eyes;
+		box-shadow: inset 1px 1px 2px white;
+
+
+		&::after {
+			position: inherit;
+			content: '';
+			left: 16px;
+		  @extend %eyes;
+			box-shadow: inherit;
+		}
+	}
+
+	.mouth {
+		position: absolute;
+		top: 50px;
+		left: calc(50% - 5px);
+		border-bottom: 3px solid black;
+		border-end-end-radius: 10px;
+		border-end-start-radius: 10px;
+		border-radius: 50%;
+		height: 10px;
+		width: 10px;
+		transition: .4s ease-in-out;
+	}
+
+	.flame {
+		position: absolute;
+		left: calc(50% - 15px);
+		top: -40px;
+		width: 30px;
+		height: 30px;
+		background: orange;
+  	transform: rotate(45deg);
+		animation: flameFlicker 1s ease-in-out infinite alternate;
+	}
+
+	&:hover{
+		.mouth {
+			left: 20px;
+			border-bottom: none;
+			background: #000;
+			height: 12px;
+		}
+
+		~ .candle2 .flame {
+			animation: flameFlickerTwo 0.2s ease-in-out infinite alternate;
+		}
+
+		~ .candle2 .mouth {
+			left: 15px;
+			border-bottom: none;
+			background: #000;
+			height: 15px;
+			border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+			animation: boo 0.5s linear infinite;
+
+			&::after {
+				display: none;
+			}
+		}
+
+		~ .candle2 .eyes {
+			box-shadow: inset 3px -2px 2px white;
+		}
+
+		~ span {
+			display: block;
+		}
+	}
+}
+
+.candle2 {
+	position: absolute;
+	left: 52%;
+	margin-bottom: -43px;
+	height: 100px;
+	border-radius: 20px 5px 0 0;
+	background: linear-gradient(-30deg,  #ecad8f 80%, #fed797);
+
+	.mouth {
+			left: calc(50% - 10px);
+			border-bottom: none;
+			background: #000;
+			height: 12px;
+
+			&::after {
+				position: inherit;
+				content: '♫♪';
+				left: -28px;
+			}
+		}
+
+	.eyes {
+		box-shadow: inset -1px -1px 2px white;
+	}
+}
+
+.floor {
+	width: 400px;
+	height: 6px;
+	background: #AA7B6F;
+	box-shadow:  3px 3px 5px rgb(124, 102, 73);
+}
+
+
+span {
+	color: lightsteelblue;
+	display: none;
+	position: absolute;
+	top: 47%;
+	left: 51.2%;
+	font-size: 1.5rem;
+	transform: rotate(170deg);
+
+	&::after {
+		position:inherit;
+		content: '/';
+		font-weight: bold;
+		top: 16px;
+		left: 5px;
+		transform: rotate(70deg);
+	}
+
+	&::before {
+		position:inherit;
+		content: 'ᓚ';
+		top: 26px;
+		left: 0px;
+		transform: rotateX(180deg);
+	}
+}
+
+@keyframes flameFlicker {
+	from {
+	 	border-radius: 40% 50% 18% 50% / 10% 60% 75% 60%;
+		box-shadow: inset 3px 5px 5px red;
+	}
+	to {
+	 	border-radius: 0 50% 50% 50%;
+		box-shadow: inset -1px 3px 5px red;
+	}
+}
+
+@keyframes flameFlickerTwo  {
+	from{
+	border-radius: 30% 28% 59% 52% / 18% 20% 68% 88%;
+		box-shadow: inset 3px 5px 9px red;
+	}
+	to{
+		border-radius: 0 50% 50% 50%;
+		box-shadow: inset 1px -5px 5px red;
+	}
+}
+
+@keyframes boo{
+  0%, 100% {
+  border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%;
+  }
+  34% {
+    border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%;
+  }
+  67% {
+    border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
+  }
+}
