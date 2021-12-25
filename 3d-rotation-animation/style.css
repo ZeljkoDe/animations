@@ -63,6 +63,7 @@ body .container .back .decrement:hover,
 body .container .front .increment:hover,
 body .container .back .increment:hover {
   cursor: pointer;
+	opacity: 1;
 }
 
 body .container .front .decrement,

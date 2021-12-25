@@ -12,37 +12,13 @@
 				return $(".value_back").text(value);
 			}
 		};
-		$(".increment").on("mouseenter", function () {
-			$(".increment").css({
-				"opacity": "1"
-			});
-			return $(".decrement").css({
-				"opacity": ".2"
-			});
-		});
-		$(".container").on("mouseout", function () {
-			$(".increment").css({
-				"opacity": ".2"
-			});
-			return $(".decrement").css({
-				"opacity": ".2"
-			});
-		});
-		$(".decrement").on("mouseenter", function () {
-			$(".decrement").css({
-				"opacity": "1"
-			});
-			return $(".increment").css({
-				"opacity": ".2"
-			});
-		});
 		$(".increment").on("mousedown", function () {
 			count++;
 			$(".container").css({
 				"transform": "rotateY(" + (zero = zero + rotateY) + "deg)"
 			});
 			value++;
-			return setValueFunc();
+			setValueFunc();
 		});
 		return $(".decrement").on("mousedown", function () {
 			count++;
@@ -50,7 +26,7 @@
 				"transform": "rotateY(" + (zero = zero - rotateY) + "deg)"
 			});
 			value--;
-			return setValueFunc();
+			setValueFunc();
 		});
 	});
 
