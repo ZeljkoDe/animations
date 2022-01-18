@@ -1,0 +1,22 @@
+body {
+	background: #e8ebf3;
+	height: 100vh;
+	font-size: 1.5rem;
+	line-height: 150%;
+	width: 600px;
+}
+
+p {
+	display: inline;
+	color: transparent;
+	background-position: right;
+	background-size: 100% 100%;
+	background-image: linear-gradient(grey, grey);
+	background-repeat: no-repeat;
+	transition: all 500ms ease-in-out;
+}
+
+p:hover {
+	color: black;
+	background-size: 0% 100%;
+}
