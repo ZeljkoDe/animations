@@ -1,0 +1,56 @@
+body {
+	background: #e8ebf3;
+	height: 100vh;
+	font-size: 1.5rem;
+	line-height: 150%;
+	width: 600px;
+}
+
+p {
+	display: inline;
+	color: transparent;
+	background-position: right;
+	background-size: 100% 100%;
+	background-image: linear-gradient(grey, grey);
+	background-repeat: no-repeat;
+	transition: all 500ms ease-in-out;
+}
+
+p:hover {
+	color: black;
+	background-size: 0% 100%;
+}
+
+.hello {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 25vw;
+	animation-name: wave;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+	font-family: "Righteous", cursive;
+	-webkit-text-stroke-width: 3px;
+	-webkit-text-stroke-color: black;
+}
+
+@for $i from 1 through 4 {
+	.hello:nth-of-type(#{$i}) {
+		animation-duration: 2s;
+		animation-delay: 0.8s - ($i / 4);
+	}
+}
+
+@keyframes wave {
+	40%,
+	50% {
+		transform: translate(-50%, -65%) scale(1.05);
+	}
+
+	0%,
+	90%,
+	100% {
+		transform: translate(-50%, -45%) scale(0.95);
+	}
+}
